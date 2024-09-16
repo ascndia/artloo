@@ -4,5 +4,9 @@ tech stack used
 - tailwind
 - shadcn
 - zod
+- react resizeable panel
+- radix
+- vaul
 - react hook form
 - zustand
+![screenshot](screencapture-localhost-3000-2024-09-16-21_56_55.png)
