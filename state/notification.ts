@@ -3,8 +3,8 @@ import { RefObject } from "react";
 
 // Define the store interface
 interface NotificationStore {
-  containerRef: RefObject<HTMLDivElement> | null;
-  setContainerRef: (ref: RefObject<HTMLDivElement>) => void;
+  containerRef: RefObject<HTMLElement> | null;
+  setContainerRef: (ref: RefObject<HTMLElement>) => void;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   toggleOpen: () => void;

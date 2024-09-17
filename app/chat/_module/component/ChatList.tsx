@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MessageSquare, Check } from "lucide-react";
 import { usePageStore } from "../state/page";
+import useIsMobile from "@/hooks/useIsMobile";
 
 interface ChatItem {
   id: string;
@@ -107,8 +108,11 @@ const getAvatarColor = (name: string) => {
 
 export function ChatList() {
   const { setLeftSidebarOpen } = usePageStore();
+  const isMobile = useIsMobile();
   const handleClick = () => {
-    setLeftSidebarOpen(false);
+    if (isMobile) {
+      setLeftSidebarOpen(false);
+    }
   };
   return (
     <ScrollArea className="w-auto p-2 overflow-y-auto flex-grow rounded-md border">

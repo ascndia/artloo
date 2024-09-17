@@ -121,7 +121,7 @@ export default function FixedLayout({
                   <Panel
                     minSize={24}
                     defaultSize={24}
-                    maxSize={30}
+                    maxSize={60}
                     id="left-panel"
                     order={1}
                   >
@@ -130,7 +130,13 @@ export default function FixedLayout({
                   <PanelResizeHandle className="w-[2px] bg-foreground/10" />
                 </>
               )}
-              <Panel id="main-panel" defaultSize={40} maxSize={100} order={2}>
+              <Panel
+                id="main-panel"
+                defaultSize={40}
+                minSize={40}
+                maxSize={100}
+                order={2}
+              >
                 {children}
               </Panel>
               {isRightSidebarOpen && (
@@ -139,7 +145,7 @@ export default function FixedLayout({
                   <Panel
                     minSize={24}
                     defaultSize={24}
-                    maxSize={30}
+                    maxSize={60}
                     id="right-panel"
                     order={3}
                   >

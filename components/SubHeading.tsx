@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { Container } from "./Container";
 import { useNotificationStore } from "@/state/notification";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 export function SubHeaderComponent() {
   const [isVisible, setIsVisible] = useState(true);
@@ -61,8 +62,11 @@ export function SubHeaderComponent() {
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
       }`}
     >
-      <Container className="border-b " size="full">
-        <div className="container flex h-12 items-center justify-between">
+      <Container className="border-b" size="full">
+        <ScrollArea
+          dir="ltr"
+          className="container whitespace-nowrap flex py-1.5 items-center gap-4 "
+        >
           <div className="flex items-center space-x-4">
             <Link
               href="/"
@@ -99,25 +103,26 @@ export function SubHeaderComponent() {
               <FileTextIcon className="h-5 w-5" />
               <span className="text-sm font-medium">Articles</span>
             </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  <MoreHorizontalIcon className="h-5 w-5" />
+                  <span className="ml-2 text-sm font-medium">More</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-40">
+                <DropdownMenuItem>Option 1</DropdownMenuItem>
+                <DropdownMenuItem>Option 2</DropdownMenuItem>
+                <DropdownMenuItem>Option 3</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-muted-foreground hover:text-primary"
-              >
-                <MoreHorizontalIcon className="h-5 w-5" />
-                <span className="ml-2 text-sm font-medium">More</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-40">
-              <DropdownMenuItem>Option 1</DropdownMenuItem>
-              <DropdownMenuItem>Option 2</DropdownMenuItem>
-              <DropdownMenuItem>Option 3</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </Container>
     </nav>
   );

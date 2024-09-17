@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import { NotificationDrawer } from "./Drawer/Drawer copy";
 import { HeaderComponent } from "./Heading";
 import { SubHeaderComponent } from "./SubHeading";
@@ -10,13 +10,16 @@ import { AiChatButton } from "./Ai/AiButton";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { useSidebarStore } from "@/state/generate-sidebar";
 import GenerateSidebar from "./Sidebar/GenerateSidebar";
+import { cn } from "@/lib/utils";
+import useBreakpoint from "@/hooks/useBreakpoint";
+import { MobileSearchDrawer } from "./SearchDrawer";
 
 export default function FixedLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const setContainerRef = useNotificationStore(
     (state) => state.setContainerRef
   );
@@ -29,6 +32,8 @@ export default function FixedLayout({
   }, [setContainerRef]); // Add setContainerRef to the dependency array
 
   const { sidebarOpen } = useSidebarStore();
+
+  const isBreakpoint = useBreakpoint(containerRef);
 
   return (
     <div className="h-screen">
@@ -58,10 +63,11 @@ export default function FixedLayout({
           minSize={40}
           maxSize={100}
         >
-          <div className="flex flex-col h-screen">
+          <div className={cn("flex flex-col h-screen")}>
             <HeaderComponent />
             <main ref={containerRef} className="flex-1 relative overflow-auto">
               <NotificationDrawer />
+              <MobileSearchDrawer />
               <SubHeaderComponent />
               {children}
             </main>

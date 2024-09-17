@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button"; // shadcn Button component
+import useBreakpoint from "@/hooks/useBreakpoint";
 import useIsMobile from "@/hooks/useIsMobile";
 import { cn } from "@/lib/utils"; // Utility to combine class names (if you have one set up)
 import { ArrowRightIcon } from "lucide-react";

@@ -41,35 +41,46 @@ import { useNotificationStore } from "@/state/notification";
 import Action from "./Action";
 import SearchHeader from "./SearchHeader";
 import useIsMobile from "@/hooks/useIsMobile";
+import useBreakpoint from "@/hooks/useBreakpoint";
+import { useSearchDrawer } from "@/state/search-drawer";
 
 export function HeaderComponent() {
   const { setTheme, theme } = useTheme();
-  const isMobile = useIsMobile();
+  const isBreakpoint = useBreakpoint();
   const ToggleDrawer = useNotificationStore((state) => state.toggleOpen);
-
+  const { setIsOpen } = useSearchDrawer();
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
       <Container className="border-b" size="full">
-        <div className=" flex h-14 items-center">
-          <div className="md:mr-4 flex">
+        <div className=" flex h-14 items-center gap-4">
+          <div className="flex">
             <Link href="/" className="mr-4 flex items-center space-x-2">
               <PaletteIcon className="h-6 w-6" />
-              <span className="font-bold text-2xl hidden sm:inline-block">
-                Artloo
-              </span>
+              <span className="font-bold text-2xl inline-block">Artloo</span>
             </Link>
             <Link
               href="/pricing"
-              className="mr-6 hidden md:flex items-center space-x-2"
+              className="hidden md:flex items-center space-x-2"
             >
               <Button variant="outline" title="Pricing">
                 Pricing
               </Button>
             </Link>
           </div>
-
-          <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-            <SearchHeader />
+          <div className="flex flex-1 items-center ">
+            {isBreakpoint ? (
+              <Button
+                onClick={() => setIsOpen(true)}
+                className="ml-auto"
+                variant="outline"
+              >
+                <SearchIcon className="h-4 w-4" />
+              </Button>
+            ) : (
+              <SearchHeader />
+            )}
+          </div>
+          <div className="flex items-center space-x-2 justify-end">
             <Action />
             <Link href={"/chat"}>
               <Button variant="ghost" size="icon" className="px-2">

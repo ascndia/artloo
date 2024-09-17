@@ -8,9 +8,12 @@ import { CaretDownIcon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
 import { useSidebarStore } from "@/state/generate-sidebar";
 import { Brush, BrushIcon, Paintbrush, Palette, Stars } from "lucide-react";
+import useBreakpoint from "@/hooks/useBreakpoint";
+import { cn } from "@/lib/utils";
 
 function Action() {
   const { toggleSidebar } = useSidebarStore();
+  const isBreakpoint = useBreakpoint();
   return (
     <div className="flex items-center">
       <Button
@@ -20,7 +23,9 @@ function Action() {
         className={"rounded-r-none"}
       >
         <Paintbrush className="h-4 w-4" />
-        <span className="ml-2 md:block hidden">Generate Images</span>
+        <span className={cn("ml-2", isBreakpoint && "hidden")}>
+          Generate Images
+        </span>
       </Button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

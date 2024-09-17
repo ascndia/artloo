@@ -11,7 +11,7 @@ interface PageStore {
 
 export const usePageStore = create<PageStore>((set) => ({
   isLeftSidebarOpen: true,
-  isRightSidebarOpen: true,
+  isRightSidebarOpen: false,
   toggleLeftSidebar: () =>
     set((state) => ({ isLeftSidebarOpen: !state.isLeftSidebarOpen })),
   toggleRightSidebar: () =>
