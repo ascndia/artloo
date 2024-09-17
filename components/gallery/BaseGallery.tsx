@@ -1,4 +1,6 @@
+"use client";
 import { Button } from "@/components/ui/button"; // shadcn Button component
+import useIsMobile from "@/hooks/useIsMobile";
 import { cn } from "@/lib/utils"; // Utility to combine class names (if you have one set up)
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode } from "react";
@@ -20,12 +22,20 @@ export function BaseGallery({
   headingLevel: Heading = "h2", // Default to h2
   className = "",
 }: GalleryProps) {
+  const isMobile = useIsMobile();
   return (
     <section className={cn("py-8 @container", className)}>
       <div className="flex justify-between items-center mb-6">
-        <Heading className="text-3xl font-bold tracking-tight">{title}</Heading>
+        <Heading
+          className={cn(
+            "text-3xl font-bold tracking-tight",
+            isMobile && "!text-2xl"
+          )}
+        >
+          {title}
+        </Heading>
         {exploreLink && (
-          <Button asChild className="">
+          <Button size={isMobile ? "sm" : "default"} asChild className="">
             <a
               href={exploreLink}
               target="_blank"

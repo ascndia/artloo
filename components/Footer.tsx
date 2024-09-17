@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./components-ui-container";
+import { Container } from "./Container";
 
 export default function Footer() {
   return (

@@ -218,7 +218,7 @@ export default function Component() {
   );
 }
 
-function ArrowUpIcon(props) {
+function ArrowUpIcon(props: any) {
   return (
     <svg
       {...props}
@@ -238,7 +238,7 @@ function ArrowUpIcon(props) {
   );
 }
 
-function ImageIcon(props) {
+function ImageIcon(props: any) {
   return (
     <svg
       {...props}
@@ -259,7 +259,7 @@ function ImageIcon(props) {
   );
 }
 
-function PaperclipIcon(props) {
+function PaperclipIcon(props: any) {
   return (
     <svg
       {...props}
@@ -278,7 +278,7 @@ function PaperclipIcon(props) {
   );
 }
 
-function SettingsIcon(props) {
+function SettingsIcon(props: any) {
   return (
     <svg
       {...props}

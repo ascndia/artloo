@@ -19,7 +19,7 @@ import {
   ShoppingBagIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
-import { Container } from "./components-ui-container";
+import { Container } from "./Container";
 import { useNotificationStore } from "@/state/notification";
 
 export function SubHeaderComponent() {
@@ -98,20 +98,6 @@ export function SubHeaderComponent() {
             >
               <FileTextIcon className="h-5 w-5" />
               <span className="text-sm font-medium">Articles</span>
-            </Link>
-            <Link
-              href="/events"
-              className="flex items-center space-x-2 text-muted-foreground hover:text-primary"
-            >
-              <CalendarIcon className="h-5 w-5" />
-              <span className="text-sm font-medium">Events</span>
-            </Link>
-            <Link
-              href="/shop"
-              className="flex items-center space-x-2 text-primary hover:text-primary/80"
-            >
-              <ShoppingBagIcon className="h-5 w-5" />
-              <span className="text-sm font-medium">Shop</span>
             </Link>
           </div>
           <DropdownMenu>

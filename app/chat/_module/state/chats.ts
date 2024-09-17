@@ -18,11 +18,11 @@ interface isSeachingChat {
 }
 
 interface searchChatResult {
-  allChats: IChat[] | [];
-  privateChats: IChat[] | [];
-  groupChats: IChat[] | [];
-  existingChats: IChat[] | [];
-  notJoinedChats: IChat[] | [];
+  allChats: Record<string, IChat>[];
+  privateChats: Record<string, IChat>;
+  groupChats: Record<string, IChat>;
+  existingChats: Record<string, IChat>;
+  notJoinedChats: Record<string, IChat>;
   setSearchChatResult: (searchResult: IChat[]) => void;
   setPrivateChats: (privateChats: IChat[]) => void;
   setGroupChats: (groupChats: IChat[]) => void;
@@ -54,11 +54,11 @@ const createIsSearchingChatSlice: StateCreator<isSeachingChat> = (set) => ({
 });
 
 const createSearchChatResultSlice: StateCreator<searchChatResult> = (set) => ({
-  allChats: [],
-  privateChats: [],
-  groupChats: [],
-  existingChats: [],
-  notJoinedChats: [],
+  allChats: {},
+  privateChats: {},
+  groupChats: {},
+  existingChats: {},
+  notJoinedChats: {},
   setSearchChatResult: (searchResult: IChat[]) =>
     set({ allChats: searchResult }),
   setPrivateChats: (privateChats: IChat[]) => set({ privateChats }),

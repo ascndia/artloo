@@ -36,29 +36,80 @@ import {
   MessageCircle,
   List,
   Menu,
+  ArrowLeft,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useNotificationStore } from "@/state/notification";
-import { Container } from "@/components/components-ui-container";
+import { Container } from "@/components/Container";
 import { usePageStore } from "../state/page";
+import useIsMobile from "@/hooks/useIsMobile";
 
 export function Heading() {
   const [category, setCategory] = React.useState("Models");
   const { setTheme, theme } = useTheme();
 
-  const { toggleLeftSidebar, toggleRightSidebar } = usePageStore();
+  const {
+    setLeftSidebarOpen,
+    setRightSidebarOpen,
+    isLeftSidebarOpen,
+    isRightSidebarOpen,
+  } = usePageStore();
+
+  const isMobile = useIsMobile();
+
+  const handleToggleLeftBar = () => {
+    if (isMobile) {
+      setRightSidebarOpen(false);
+      setLeftSidebarOpen(!isLeftSidebarOpen);
+    } else {
+      setLeftSidebarOpen(!isLeftSidebarOpen);
+    }
+  };
+
+  const handleToggleRightBar = () => {
+    if (isMobile) {
+      setLeftSidebarOpen(false);
+      setRightSidebarOpen(!isRightSidebarOpen);
+    } else {
+      setRightSidebarOpen(!isRightSidebarOpen);
+    }
+  };
+
+  const handleBackButton = () => {
+    if (isRightSidebarOpen) {
+      setRightSidebarOpen(false);
+      return;
+    }
+    if (!isLeftSidebarOpen) {
+      setLeftSidebarOpen(true);
+    }
+  };
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
       <Container className="border-b" size="full">
         <div className=" flex justify-between h-14 items-center">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="px-2"
-            onClick={toggleLeftSidebar}
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
+          <div>
+            {!isMobile && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="px-2"
+                onClick={handleToggleLeftBar}
+              >
+                <Menu className="h-6 w-6" />
+              </Button>
+            )}
+            {isMobile && (!isLeftSidebarOpen || isRightSidebarOpen) && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="px-2"
+                onClick={handleBackButton}
+              >
+                <ArrowLeft className="h-6 w-6" />
+              </Button>
+            )}
+          </div>
           <div className="md:mr-4 flex">
             <Link href="/" className="mr-4 flex items-center space-x-2">
               <PaletteIcon className="h-6 w-6" />
@@ -68,15 +119,17 @@ export function Heading() {
             </Link>
           </div>
           <div className="flex items-center justify-between space-x-2 md:justify-end">
-            <Button
-              onClick={toggleRightSidebar}
-              variant="ghost"
-              size="icon"
-              className="px-2"
-            >
-              <BellIcon className="h-4 w-4" />
-              <span className="sr-only">Notifications</span>
-            </Button>
+            {(!isMobile || !isLeftSidebarOpen) && (
+              <Button
+                onClick={handleToggleRightBar}
+                variant="ghost"
+                size="icon"
+                className="px-2"
+              >
+                <BellIcon className="h-4 w-4" />
+                <span className="sr-only">Notifications</span>
+              </Button>
+            )}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button

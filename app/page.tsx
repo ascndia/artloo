@@ -1,5 +1,5 @@
-import { BaseImageCard } from "@/components/cards/BaseImageCard";
-import { ImageCard } from "@/components/cards/ImageCard";
+import { BaseImageCard } from "@/components/Card/BaseImageCard";
+import { ImageCard } from "@/components/Card/ImageCard";
 import { SaveToCollection } from "@/components/Dialog/SaveToCollection";
 import FixedLayout from "@/components/FixedLayout";
 import { BaseGallery } from "@/components/gallery/BaseGallery";

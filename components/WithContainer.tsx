@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ContainerProps } from "./components-ui-container";
+import { Container, ContainerProps } from "./Container";
 
 export default function WithContainer({
   children,

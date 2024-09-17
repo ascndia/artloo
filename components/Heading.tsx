@@ -36,16 +36,15 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Container } from "./components-ui-container";
+import { Container } from "./Container";
 import { useNotificationStore } from "@/state/notification";
-import Search2 from "./seacrh2";
 import Action from "./Action";
 import SearchHeader from "./SearchHeader";
+import useIsMobile from "@/hooks/useIsMobile";
 
 export function HeaderComponent() {
-  const [category, setCategory] = React.useState("Models");
   const { setTheme, theme } = useTheme();
-
+  const isMobile = useIsMobile();
   const ToggleDrawer = useNotificationStore((state) => state.toggleOpen);
 
   return (
@@ -68,10 +67,7 @@ export function HeaderComponent() {
               </Button>
             </Link>
           </div>
-          {/* <Button variant="outline" size="icon" className="mr-2 md:hidden">
-            <MenuIcon className="h-4 w-4" />
-            <span className="sr-only">Toggle menu</span>
-          </Button> */}
+
           <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
             <SearchHeader />
             <Action />

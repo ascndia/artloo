@@ -45,21 +45,3 @@ function Action() {
 }
 
 export default Action;
-
-// <DropdownMenu>
-//   <DropdownMenuTrigger asChild>
-//     <Button variant="outline">
-//       <span className="mr-2">Create</span>
-//       <ChevronDownIcon />
-//     </Button>
-//   </DropdownMenuTrigger>
-//   <DropdownMenuContent>
-//     <DropdownMenuItem>Generate images</DropdownMenuItem>
-//     <DropdownMenuItem>Post images</DropdownMenuItem>
-//     <DropdownMenuItem>Post videos</DropdownMenuItem>
-//     <DropdownMenuItem>Upload a model</DropdownMenuItem>
-//     <DropdownMenuItem>Train a LoRA</DropdownMenuItem>
-//     <DropdownMenuItem>Write an article</DropdownMenuItem>
-//     <DropdownMenuItem>Create a bounty</DropdownMenuItem>
-//   </DropdownMenuContent>
-// </DropdownMenu>

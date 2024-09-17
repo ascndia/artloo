@@ -13,7 +13,7 @@ import { Button } from "../ui/button";
 import { useSaveToCollection } from "@/state/save-to-collection";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Checkbox } from "../ui/checkbox";
-import CollectionForm from "../form/CollectionForm";
+import CollectionForm from "../Form/CollectionForm";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";

@@ -34,7 +34,7 @@ const MessageInput = () => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Type a message..."
-        className="w-full sm:text-sm"
+        className="w-full sm:text-sm resize-none"
       />
       <Button variant={"outline"} type="submit" className="">
         <SendIcon className="h-6 w-6" />

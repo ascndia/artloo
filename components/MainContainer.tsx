@@ -2,7 +2,7 @@
 
 import { useNotificationStore } from "@/state/notification";
 import { useEffect, useRef } from "react";
-import { Container } from "./components-ui-container";
+import { Container } from "./Container";
 
 export default function MainContainer({
   children,
