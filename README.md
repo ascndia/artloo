@@ -9,4 +9,8 @@ tech stack used
 - vaul
 - react hook form
 - zustand
-![screenshot](screencapture-localhost-3000-2024-09-16-21_56_55.png)
+  
+home page
+![screenshot](home.png)
+chat page
+![screenshot](chat.png)
