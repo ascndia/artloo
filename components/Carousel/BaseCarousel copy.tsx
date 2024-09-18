@@ -1,24 +1,25 @@
-'use client'
+"use client";
+"use client";
 
-import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
+import * as React from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 
 const images = [
-  "/placeholder.svg?height=400&width=300",
-  "/placeholder.svg?height=400&width=300",
-  "/placeholder.svg?height=400&width=300",
-  "/placeholder.svg?height=400&width=300",
-  "/placeholder.svg?height=400&width=300",
-]
+  "/placeholder.png?height=400&width=300",
+  "/placeholder.png?height=400&width=300",
+  "/placeholder.png?height=400&width=300",
+  "/placeholder.png?height=400&width=300",
+  "/placeholder.png?height=400&width=300",
+];
 
-export function Carousel() {
+export function BaseCarousel() {
   return (
     <Carousel
       opts={{
@@ -29,7 +30,10 @@ export function Carousel() {
     >
       <CarouselContent className="-ml-2 md:-ml-4">
         {images.map((src, index) => (
-          <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-4/5 lg:basis-3/4">
+          <CarouselItem
+            key={index}
+            className="pl-2 md:pl-4 md:basis-4/5 lg:basis-3/4"
+          >
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-[3/4] items-center justify-center p-6">
@@ -47,5 +51,5 @@ export function Carousel() {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  )
+  );
 }

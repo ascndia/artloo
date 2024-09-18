@@ -43,8 +43,8 @@ export default function FixedLayout({
             <Panel
               id="left-panel"
               order={1}
-              defaultSize={28}
-              minSize={28}
+              defaultSize={32}
+              minSize={32}
               maxSize={48}
               className="hidden md:block"
             >

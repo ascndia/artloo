@@ -1,5 +1,6 @@
 import { BaseImageCard } from "@/components/Card/BaseImageCard";
 import { ImageCard } from "@/components/Card/ImageCard";
+import { BaseCarousel } from "@/components/Carousel/BaseCarousel";
 import { SaveToCollection } from "@/components/Dialog/SaveToCollection";
 import FixedLayout from "@/components/FixedLayout";
 import { BaseGallery } from "@/components/gallery/BaseGallery";
@@ -23,23 +24,16 @@ export default function Home() {
           <BaseImageCard />
         </BaseGallery>
       </WithContainer>
-
       <SectionDivider />
-
       <WithContainer>
-        <BaseGallery
-          title="Featured Artist"
-          exploreLink="/latest"
-          exploreText="View All"
-          headingLevel="h3"
-        >
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-          <ImageCard />
-        </BaseGallery>
+        <BaseCarousel title="Featured Collections">
+          <BaseImageCard />
+          <BaseImageCard />
+          <BaseImageCard />
+          <BaseImageCard />
+          <BaseImageCard />
+          <BaseImageCard />
+        </BaseCarousel>
       </WithContainer>
       <SectionDivider />
       <WithContainer>
