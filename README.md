@@ -1,4 +1,4 @@
-artloo, an art sharing website heavily inspired by civitai, pixiv, devianart and many more sites.
+artloo, an art sharing website heavily inspired by civitai, pixiv, devianart and many more sites.  
 tech stack used 
 - nextjs
 - tailwind
@@ -9,4 +9,8 @@ tech stack used
 - vaul
 - react hook form
 - zustand
-![screenshot](screencapture-localhost-3000-2024-09-16-21_56_55.png)
+  
+home page  
+![screenshot](home.png)
+chat page  
+![screenshot](chat.png)
