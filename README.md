@@ -15,5 +15,5 @@ home page
 ![screenshot](home.png)
 chat page  
 ![screenshot](chat.png)
-generator
+generator page
 ![screenshot](generate.png)
