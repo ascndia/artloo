@@ -13,10 +13,10 @@ import { Button } from "../ui/button";
 import { useSaveToCollection } from "@/state/save-to-collection";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 import { Checkbox } from "../ui/checkbox";
-import CollectionForm from "../Form/CollectionForm";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import MyForm from "../Form/CollectionForm";
 
 const formSchema = z.object({
   name: z.string().nonempty("Name is required"),
@@ -84,7 +84,7 @@ export function SaveToCollection() {
           </TabsContent>
           <TabsContent value="2">
             <div className="py-4">
-              <CollectionForm form={form} />
+              <MyForm form={form} />
             </div>
             <DialogFooter className="sm:justify-end ">
               <DialogClose asChild>
