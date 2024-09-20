@@ -1,14 +1,14 @@
 "use client";
 
 import { RefObject, useEffect, useRef, useState } from "react";
-import { NotificationDrawer } from "./Drawer/Drawer copy";
+import { NotificationDrawer } from "./drawer/Drawer copy";
 import { HeaderComponent } from "./Heading";
 import { SubHeaderComponent } from "./SubHeading";
 import { useNotificationStore } from "@/state/notification";
 import Footer from "./Footer";
-import { AiChatButton } from "./Ai/AiButton";
+import { AiChatButton } from "./ai/AiButton";
 import { useSidebarStore } from "@/state/generate-sidebar";
-import GenerateSidebar from "./Sidebar/GenerateSidebar";
+import GenerateSidebar from "./sidebar/GenerateSidebar";
 import { cn } from "@/lib/utils";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { MobileSearchDrawer } from "./SearchDrawer";

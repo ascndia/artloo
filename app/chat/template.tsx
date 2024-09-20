@@ -64,7 +64,7 @@
 
 "use client";
 
-import { AiChatButton } from "@/components/Ai/AiButton";
+import { AiChatButton } from "@/components/ai/AiButton";
 import Footer from "@/components/Footer";
 import { Heading } from "./_module/component/Heading";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
