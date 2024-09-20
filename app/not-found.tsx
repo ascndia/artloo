@@ -1,10 +1,10 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/58MAJ73ziny
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
-import FixedLayout from "@/components/FixedLayout";
+// import FixedLayout from "@/components/FixedLayout";
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+const FixedLayout = dynamic(() => import("@/components/FixedLayout"), {
+  ssr: false,
+});
 
 export default function Component() {
   return (

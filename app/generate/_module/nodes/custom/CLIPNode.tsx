@@ -4,22 +4,34 @@ import { Box, Flex } from "@chakra-ui/layout";
 
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import BaseNode from "../BaseNode";
 
 export type LoraNode = Node<{ label: string; text: string }, "clip">;
 
-export default function CLIPNode(props: NodeProps<LoraNode>) {
-  const [value, setValue] = React.useState(props.data.text);
+export default function CLIPNode({
+  data,
+  selected = false,
+  ...props
+}: NodeProps<LoraNode>) {
+  const [value, setValue] = React.useState(data.text);
   return (
-    <Box className="bg-slate-700 min-w-56 px-3 py-2 rounded-md">
-      <Flex direction={"column"} className="gap-2">
-        <Label className="text-xs">{props.data.label}</Label>
-        <Textarea
-          placeholder="Enter your propmt here"
-          className="p-1 text-xs"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-      </Flex>
+    <BaseNode
+      data={data}
+      {...props}
+      isVisible={selected}
+      label="CLIP"
+      className="bg-yellow-400 dark:bg-yellow-500 min-w-56"
+    >
+      <Box className="p-2">
+        <Flex direction={"column"} className="gap-2">
+          <Textarea
+            placeholder="Enter your propmt here"
+            className="p-1 text-xs"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+        </Flex>
+      </Box>
       <Handle
         type="target"
         className="!w-3 !h-3 !bg-foreground"
@@ -30,6 +42,6 @@ export default function CLIPNode(props: NodeProps<LoraNode>) {
         className="!w-3 !h-3 !bg-foreground"
         position={Position.Right}
       />
-    </Box>
+    </BaseNode>
   );
 }

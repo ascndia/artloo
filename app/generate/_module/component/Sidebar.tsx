@@ -36,7 +36,7 @@ export default function Sidebar() {
             <TabsTrigger value="Editor">Editor</TabsTrigger>
             <TabsTrigger value="Workflow">Workflow</TabsTrigger>
             <TabsTrigger value="Drive">Drive</TabsTrigger>
-            {/* <TabsTrigger value="Settings">Settings</TabsTrigger> */}
+            <TabsTrigger value="Settings">Settings</TabsTrigger>
           </TabsList>
         </Box>
         <TabsContent value="Editor">

@@ -7,7 +7,7 @@ import { Container } from "./Container";
 export default function MainContainer({
   children,
   ...rest
-}: React.PropsWithChildren<{}>) {
+}: React.PropsWithChildren) {
   const containerRef = useRef<HTMLDivElement>(null);
   const setContainerRef = useNotificationStore(
     (state) => state.setContainerRef

@@ -43,6 +43,7 @@ import SearchHeader from "./SearchHeader";
 import useIsMobile from "@/hooks/useIsMobile";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { useSearchDrawer } from "@/state/search-drawer";
+import PricingBtn from "./PricingBtn";
 
 export function HeaderComponent() {
   const { setTheme, theme } = useTheme();
@@ -62,9 +63,10 @@ export function HeaderComponent() {
               href="/pricing"
               className="hidden md:flex items-center space-x-2"
             >
-              <Button variant="outline" title="Pricing">
+              {/* <Button variant="outline" title="Pricing">
                 Pricing
-              </Button>
+              </Button> */}
+              <PricingBtn />
             </Link>
           </div>
           <div className="flex flex-1 items-center ">

@@ -45,10 +45,13 @@ const SearchHeader = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
-  const handleSuggestionClick = (suggestion: any) => {
+  const handleSuggestionClick = (suggestion: {
+    title: string;
+    image: string;
+  }) => {
     setSearchQuery(suggestion.title);
   };
 

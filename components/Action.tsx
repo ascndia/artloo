@@ -10,6 +10,8 @@ import { useSidebarStore } from "@/state/generate-sidebar";
 import { Brush, BrushIcon, Paintbrush, Palette, Stars } from "lucide-react";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { BgAnimateButton } from "./ui/animated-button";
 
 function Action() {
   const { toggleSidebar } = useSidebarStore();
@@ -37,7 +39,17 @@ function Action() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Post images</DropdownMenuItem>
+          <DropdownMenuItem className="" asChild>
+            <Link href="/generate">
+              <BgAnimateButton
+                rounded="sm"
+                gradient="sunset"
+                animation="spin-fast"
+              >
+                Open Workflow
+              </BgAnimateButton>
+            </Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Post videos</DropdownMenuItem>
           <DropdownMenuItem>Upload a model</DropdownMenuItem>
           <DropdownMenuItem>Train a LoRA</DropdownMenuItem>

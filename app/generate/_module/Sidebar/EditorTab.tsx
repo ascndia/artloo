@@ -16,7 +16,7 @@ import { useFlowContext } from "../FlowProvider";
 import MultipleSelector, { Option } from "@/components/ui/multiple-select";
 
 export default function EditorTab() {
-  const { addCheckpoint, addLora, addCLIP } = useFlowContext();
+  const { addCheckpoint, addLora, addCLIP, addKSampler } = useFlowContext();
   const [checkpoint, setCheckpoint] = React.useState("");
   const [lora, setLora] = React.useState("");
   return (
@@ -83,8 +83,14 @@ export default function EditorTab() {
       </Flex>
       <Flex w={"full"} direction={"column"} gap={8}>
         <Label>Add CLIP</Label>
-        <Button onClick={addCLIP} variant={"outline"}>
+        <Button onClick={() => addCLIP("")} variant={"outline"}>
           Add CLIP
+        </Button>
+      </Flex>
+      <Flex w={"full"} direction={"column"} gap={8}>
+        <Label>Add KSampler</Label>
+        <Button onClick={() => addKSampler()} variant={"outline"}>
+          Add KSampler
         </Button>
       </Flex>
     </Box>

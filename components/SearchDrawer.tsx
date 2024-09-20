@@ -56,7 +56,10 @@ export function MobileSearchDrawer() {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSuggestionClick = (suggestion: any) => {
+  const handleSuggestionClick = (suggestion: {
+    title: string;
+    image: string;
+  }) => {
     setSearchQuery(suggestion.title);
   };
 

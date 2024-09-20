@@ -73,6 +73,11 @@ import LeftSidebar from "./_module/component/LeftSidebar";
 import RightSidebar from "./_module/component/RightSidebar";
 import useIsMobile from "@/hooks/useIsMobile";
 import { useEffect } from "react";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 export default function FixedLayout({
   children,
@@ -115,10 +120,10 @@ export default function FixedLayout({
               )}
             </>
           ) : (
-            <PanelGroup direction="horizontal">
+            <ResizablePanelGroup direction="horizontal">
               {isLeftSidebarOpen && (
                 <>
-                  <Panel
+                  <ResizablePanel
                     minSize={24}
                     defaultSize={24}
                     maxSize={60}
@@ -126,8 +131,8 @@ export default function FixedLayout({
                     order={1}
                   >
                     <LeftSidebar />
-                  </Panel>
-                  <PanelResizeHandle className="w-[2px] bg-foreground/10" />
+                  </ResizablePanel>
+                  <ResizableHandle withHandle />
                 </>
               )}
               <Panel
@@ -141,8 +146,8 @@ export default function FixedLayout({
               </Panel>
               {isRightSidebarOpen && (
                 <>
-                  <PanelResizeHandle className="w-[2px] bg-foreground/10" />
-                  <Panel
+                  <ResizableHandle withHandle />
+                  <ResizablePanel
                     minSize={24}
                     defaultSize={24}
                     maxSize={60}
@@ -150,10 +155,10 @@ export default function FixedLayout({
                     order={3}
                   >
                     <RightSidebar />
-                  </Panel>
+                  </ResizablePanel>
                 </>
               )}
-            </PanelGroup>
+            </ResizablePanelGroup>
           )}
         </main>
         {/* <AiChatButton /> */}

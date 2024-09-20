@@ -16,10 +16,19 @@ import { useFlowContext } from "./FlowProvider";
 
 export default function Flow() {
   const { ...rest } = useFlowContext();
+  const { theme } = useTheme();
   return (
     <Box h={"100%"}>
-      <ReactFlow fitView {...rest}>
-        <Background />
+      <ReactFlow
+        onNodeClick={(e) => console.log(e)}
+        fitView
+        proOptions={{ hideAttribution: true }}
+        {...rest}
+      >
+        <Background
+          // bgColor={theme === "dark" ? "#333333" : "#eeeeee"}
+          color="#888888"
+        />
         <Controls />
       </ReactFlow>
     </Box>

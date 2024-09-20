@@ -7,12 +7,16 @@ import { SubHeaderComponent } from "./SubHeading";
 import { useNotificationStore } from "@/state/notification";
 import Footer from "./Footer";
 import { AiChatButton } from "./Ai/AiButton";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { useSidebarStore } from "@/state/generate-sidebar";
 import GenerateSidebar from "./Sidebar/GenerateSidebar";
 import { cn } from "@/lib/utils";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { MobileSearchDrawer } from "./SearchDrawer";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "./ui/resizable";
 
 export default function FixedLayout({
   children,
@@ -37,10 +41,10 @@ export default function FixedLayout({
 
   return (
     <div className="h-screen">
-      <PanelGroup direction="horizontal">
+      <ResizablePanelGroup direction="horizontal">
         {sidebarOpen && (
           <>
-            <Panel
+            <ResizablePanel
               id="left-panel"
               order={1}
               defaultSize={32}
@@ -49,14 +53,15 @@ export default function FixedLayout({
               className="hidden md:block"
             >
               <GenerateSidebar />
-            </Panel>
-            <PanelResizeHandle
-              className={`w-1 bg-foreground/10 hidden md:block`}
+            </ResizablePanel>
+            <ResizableHandle
+              withHandle
+              // className={`w-1 bg-foreground/10 hidden md:block`}
             />
           </>
         )}
 
-        <Panel
+        <ResizablePanel
           id="right-panel"
           order={2}
           defaultSize={100}
@@ -74,8 +79,8 @@ export default function FixedLayout({
             <AiChatButton />
             <Footer />
           </div>
-        </Panel>
-      </PanelGroup>
+        </ResizablePanel>
+      </ResizablePanelGroup>
 
       {sidebarOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-background">

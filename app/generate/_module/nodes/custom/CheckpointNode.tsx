@@ -7,16 +7,26 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowBigDown } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import BaseNode from "../BaseNode";
 
 export type CheckpointNode = Node<{ model_name: string }, "checkpoint">;
 
-export default function CheckpointNode(props: NodeProps<CheckpointNode>) {
+export default function CheckpointNode({
+  data,
+  selected = false,
+  ...props
+}: NodeProps<CheckpointNode>) {
   return (
-    <Box className="bg-slate-700 px-3 py-2 rounded-md">
-      <Flex direction={"column"} className="gap-2">
-        <Label className="text-xs">Checkpoint</Label>
-        <Select defaultValue={props.data.model_name}>
-          <SelectTrigger className="border text-sm p-2 rounded-md">
+    <BaseNode
+      data={data}
+      {...props}
+      isVisible={selected}
+      label="Checkpoint"
+      className="bg-green-400 dark:bg-green-600 "
+    >
+      <Box className="p-2">
+        <Select defaultValue={data.model_name}>
+          <SelectTrigger className="border text-[12px] p-1 rounded-md">
             <SelectValue placeholder="Select a checkpoint" />
           </SelectTrigger>
           <SelectContent>
@@ -26,12 +36,12 @@ export default function CheckpointNode(props: NodeProps<CheckpointNode>) {
             <SelectItem value="grapes">Midjourney v6</SelectItem>
           </SelectContent>
         </Select>
-      </Flex>
+      </Box>
       <Handle
         type="source"
         className="!w-3 !h-3 !bg-foreground"
         position={Position.Right}
       />
-    </Box>
+    </BaseNode>
   );
 }

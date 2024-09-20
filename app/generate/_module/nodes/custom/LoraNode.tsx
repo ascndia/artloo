@@ -5,19 +5,29 @@ import { Select, SelectContent, SelectItem } from "@/components/ui/select";
 import { SelectTrigger, SelectValue } from "@radix-ui/react-select";
 
 import { Label } from "@/components/ui/label";
+import BaseNode from "../BaseNode";
 
 export type LoraNode = Node<{ lora_name: string }, "checkpoint">;
 
-export default function LoraNode(props: NodeProps<LoraNode>) {
-  const [value, setValue] = React.useState(props.data.lora_name);
+export default function LoraNode({
+  data,
+  selected = false,
+  ...props
+}: NodeProps<LoraNode>) {
+  const [value, setValue] = React.useState(data.lora_name);
   return (
-    <Box className="bg-slate-700 px-3 py-2 rounded-md">
-      <Flex direction={"column"} className="gap-2">
-        <Label className="text-xs">Lora</Label>
+    <BaseNode
+      data={data}
+      {...props}
+      isVisible={selected}
+      label="Lora"
+      className="bg-purple-400 "
+    >
+      <Box className="w-full p-2">
         <Select value={value} onValueChange={setValue}>
           <SelectTrigger
-            defaultValue={props.data.lora_name}
-            className="border text-sm p-2 rounded-md"
+            defaultValue={data.lora_name}
+            className="border w-full text-[12px] p-1 rounded-md"
           >
             <SelectValue placeholder="Select lora" />
           </SelectTrigger>
@@ -28,7 +38,7 @@ export default function LoraNode(props: NodeProps<LoraNode>) {
             <SelectItem value="bettercloth">Better clothings</SelectItem>
           </SelectContent>
         </Select>
-      </Flex>
+      </Box>
       <Handle
         type="target"
         className="!w-3 !h-3 !bg-foreground"
@@ -39,6 +49,6 @@ export default function LoraNode(props: NodeProps<LoraNode>) {
         className="!w-3 !h-3 !bg-foreground"
         position={Position.Right}
       />
-    </Box>
+    </BaseNode>
   );
 }

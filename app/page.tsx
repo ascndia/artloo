@@ -1,11 +1,15 @@
 import { BaseImageCard } from "@/components/Card/BaseImageCard";
-import { ImageCard } from "@/components/Card/ImageCard";
 import { BaseCarousel } from "@/components/Carousel/BaseCarousel";
 import { SaveToCollection } from "@/components/Dialog/SaveToCollection";
-import FixedLayout from "@/components/FixedLayout";
+// import FixedLayout from "@/components/FixedLayout";
 import { BaseGallery } from "@/components/gallery/BaseGallery";
 import SectionDivider from "@/components/SectionDivider";
 import WithContainer from "@/components/WithContainer";
+import dynamic from "next/dynamic";
+
+const FixedLayout = dynamic(() => import("@/components/FixedLayout"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (

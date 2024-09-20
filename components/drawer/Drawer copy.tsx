@@ -4,7 +4,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { X } from "lucide-react";
 import { useNotificationStore } from "@/state/notification";
 import { Drawer } from "vaul";
-import { useEffect, useRef } from "react";
 
 export function NotificationDrawer() {
   const { containerRef, isOpen, setIsOpen } = useNotificationStore();

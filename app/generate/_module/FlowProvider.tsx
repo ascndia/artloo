@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useEffect,
   PropsWithChildren,
+  useMemo,
 } from "react";
 import {
   addEdge,
@@ -23,7 +24,9 @@ import { string } from "zod";
 import CheckpointNode from "./nodes/custom/CheckpointNode";
 import LoraNode from "./nodes/custom/LoraNode";
 import CLIPNode from "./nodes/custom/CLIPNode";
-
+import KSamplerNode, { KSamplerType } from "./nodes/custom/KSamplerNode";
+import { createKSamplerNode } from "./NodeFactory";
+import { ReactFlowProvider } from "@xyflow/react";
 interface FlowContextType {
   nodes: Node[];
   edges: Edge[];
@@ -31,13 +34,15 @@ interface FlowContextType {
   colorMode: ColorMode | undefined;
   onNodesChange: (changes: any) => void;
   onEdgesChange: (changes: any) => void;
+  onNodesDelete: (nodes: any) => void;
   addNode: () => void;
   addCheckpoint: (model_name: string) => void;
   addLora: (model_name: string) => void;
   addCLIP: (text: string) => void;
+  addKSampler: (kSamplerType?: KSamplerType) => void;
   onConnect: (params: any) => void;
 }
-// Create a context
+
 const FlowContext = createContext<FlowContextType>({
   nodes: [],
   edges: [],
@@ -45,10 +50,12 @@ const FlowContext = createContext<FlowContextType>({
   colorMode: "light",
   onNodesChange: () => {},
   onEdgesChange: () => {},
+  onNodesDelete: () => {},
   addNode: () => {},
   addCheckpoint: () => {},
   addLora: () => {},
   addCLIP: () => {},
+  addKSampler: () => {},
   onConnect: () => {},
 });
 
@@ -57,7 +64,7 @@ export const useFlowContext = () => useContext(FlowContext);
 export const FlowProvider = ({ children }: PropsWithChildren) => {
   const { theme } = useTheme();
   const [colorMode, setColorMode] = useState<ColorMode>("light");
-  const initialNodes = [
+  const initialNodes: Node[] = [
     {
       id: "1",
       position: { x: 0, y: 0 },
@@ -66,18 +73,36 @@ export const FlowProvider = ({ children }: PropsWithChildren) => {
     },
     {
       id: "2",
-      position: { x: 120, y: 0 },
+      position: { x: 160, y: 0 },
       data: { label: "World", lora_name: "bettercloth" },
       type: "lora",
     },
     {
       id: "3",
-      position: { x: 280, y: 0 },
+      position: { x: 300, y: 0 },
       data: {
         label: "CLIP",
         text: "girl under the tree, in the fantasy world",
       },
       type: "clip",
+    },
+    {
+      id: "4",
+      position: { x: 300, y: 140 },
+      data: {
+        label: "CLIP",
+        text: "low quality, extra limb, score_1",
+      },
+      type: "clip",
+    },
+    {
+      id: "5",
+      position: { x: 560, y: 0 },
+      data: {
+        label: "k_sampler",
+        ...createKSamplerNode(),
+      },
+      type: "ksampler",
     },
   ];
 
@@ -88,15 +113,24 @@ export const FlowProvider = ({ children }: PropsWithChildren) => {
       source: "2",
       target: "3",
     },
+    {
+      id: "e2-4",
+      source: "2",
+      target: "4",
+    },
+    {
+      id: "e3-5",
+      source: "3",
+      target: "5",
+    },
+    {
+      id: "e4-5",
+      source: "4",
+      target: "5",
+    },
   ];
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-
-  const nodeTypes = {
-    checkpoint: CheckpointNode,
-    lora: LoraNode,
-    clip: CLIPNode,
-  };
 
   useEffect(() => {
     setColorMode(theme === "dark" ? "dark" : "light");
@@ -169,28 +203,68 @@ export const FlowProvider = ({ children }: PropsWithChildren) => {
     [setNodes]
   );
 
+  const addKSampler = useCallback(
+    (param?: KSamplerType) => {
+      setNodes((nds) => [
+        ...nds,
+        {
+          id: `${nds.length + 1}`,
+          position: {
+            x: Math.random() * 400,
+            y: Math.random() * 400,
+          },
+          type: "ksampler",
+          data: {
+            label: "k_sampler",
+            ...(param ? param : createKSamplerNode()),
+          },
+          // data: { label: "k_sampler", ...param },
+        },
+      ]);
+    },
+    [setNodes]
+  );
   const onConnect = useCallback(
     (params: any) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
 
+  const onNodesDelete = () => {};
+  // (nodeId: string) => {
+  //   setNodes((nds) => nds.filter((nd) => nd.id !== nodeId));
+  //   console.log("nodesToDelete", nodeId);
+  // },
+  // [setNodes]
+  const nodeTypes = useMemo(
+    () => ({
+      checkpoint: CheckpointNode,
+      lora: LoraNode,
+      clip: CLIPNode,
+      ksampler: KSamplerNode,
+    }),
+    []
+  );
   return (
-    <FlowContext.Provider
-      value={{
-        nodes,
-        edges,
-        nodeTypes,
-        colorMode,
-        onNodesChange,
-        onEdgesChange,
-        addNode,
-        addCheckpoint,
-        addLora,
-        addCLIP,
-        onConnect,
-      }}
-    >
-      {children}
-    </FlowContext.Provider>
+    <ReactFlowProvider>
+      <FlowContext.Provider
+        value={{
+          nodes,
+          edges,
+          nodeTypes,
+          colorMode,
+          onNodesChange,
+          onEdgesChange,
+          onNodesDelete,
+          addNode,
+          addCheckpoint,
+          addLora,
+          addCLIP,
+          addKSampler,
+          onConnect,
+        }}
+      >
+        {children}
+      </FlowContext.Provider>
+    </ReactFlowProvider>
   );
 };

@@ -1,13 +1,17 @@
 "use client";
 import React, { PropsWithChildren } from "react";
 import { Box } from "@chakra-ui/layout";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 import { atom, useAtom } from "jotai";
 import Sidebar from "./_module/component/Sidebar";
 import { Button } from "@/components/ui/button";
 import { SidebarIcon } from "lucide-react";
 import { ReactFlowProvider } from "@xyflow/react";
 import { FlowProvider } from "./_module/FlowProvider";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 interface pageState {
   isLeftSidebarOpen: boolean;
@@ -17,7 +21,7 @@ export const pageState = atom<pageState>({
   isLeftSidebarOpen: true,
 });
 
-export default function template({ children }: PropsWithChildren) {
+export default function Template({ children }: PropsWithChildren) {
   const [state, setState] = useAtom(pageState);
   const handleOpen = () => {
     setState((prev) => ({ ...prev, isLeftSidebarOpen: true }));
@@ -37,10 +41,10 @@ export default function template({ children }: PropsWithChildren) {
           </Button>
         )}
 
-        <PanelGroup direction="horizontal">
+        <ResizablePanelGroup direction="horizontal">
           {state.isLeftSidebarOpen && (
             <>
-              <Panel
+              <ResizablePanel
                 minSize={24}
                 defaultSize={32}
                 maxSize={48}
@@ -48,14 +52,14 @@ export default function template({ children }: PropsWithChildren) {
                 id="left"
               >
                 <Sidebar />
-              </Panel>
-              <PanelResizeHandle className="w-1 bg-foreground/10" />
+              </ResizablePanel>
+              <ResizableHandle withHandle />
             </>
           )}
-          <Panel order={2} id="main" defaultSize={68} maxSize={100}>
+          <ResizablePanel order={2} id="main" defaultSize={68} maxSize={100}>
             {children}
-          </Panel>
-        </PanelGroup>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </Box>
     </FlowProvider>
   );

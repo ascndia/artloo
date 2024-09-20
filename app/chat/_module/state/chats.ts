@@ -23,11 +23,11 @@ interface searchChatResult {
   groupChats: Record<string, IChat>;
   existingChats: Record<string, IChat>;
   notJoinedChats: Record<string, IChat>;
-  setSearchChatResult: (searchResult: IChat[]) => void;
-  setPrivateChats: (privateChats: IChat[]) => void;
-  setGroupChats: (groupChats: IChat[]) => void;
-  setExistingChats: (existingChats: IChat[]) => void;
-  setNotJoinedChats: (notJoinedChats: IChat[]) => void;
+  setSearchChatResult: (searchResult: Record<string, IChat>[]) => void;
+  setPrivateChats: (privateChats: Record<string, IChat>) => void;
+  setGroupChats: (groupChats: Record<string, IChat>) => void;
+  setExistingChats: (existingChats: Record<string, IChat>) => void;
+  setNotJoinedChats: (notJoinedChats: Record<string, IChat>) => void;
 }
 
 interface ChatStoreState {
@@ -54,17 +54,20 @@ const createIsSearchingChatSlice: StateCreator<isSeachingChat> = (set) => ({
 });
 
 const createSearchChatResultSlice: StateCreator<searchChatResult> = (set) => ({
-  allChats: {},
+  allChats: [],
   privateChats: {},
   groupChats: {},
   existingChats: {},
   notJoinedChats: {},
-  setSearchChatResult: (searchResult: IChat[]) =>
+  setSearchChatResult: (searchResult: Record<string, IChat>[]) =>
     set({ allChats: searchResult }),
-  setPrivateChats: (privateChats: IChat[]) => set({ privateChats }),
-  setGroupChats: (groupChats: IChat[]) => set({ groupChats }),
-  setExistingChats: (existingChats: IChat[]) => set({ existingChats }),
-  setNotJoinedChats: (notJoinedChats: IChat[]) => set({ notJoinedChats }),
+  setPrivateChats: (privateChats: Record<string, IChat>) =>
+    set({ privateChats }),
+  setGroupChats: (groupChats: Record<string, IChat>) => set({ groupChats }),
+  setExistingChats: (existingChats: Record<string, IChat>) =>
+    set({ existingChats }),
+  setNotJoinedChats: (notJoinedChats: Record<string, IChat>) =>
+    set({ notJoinedChats }),
 });
 
 const createMessageSlice: StateCreator<ChatStoreState> = (set) => ({

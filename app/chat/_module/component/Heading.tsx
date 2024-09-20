@@ -17,11 +17,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   PaletteIcon,
-  MenuIcon,
-  UploadIcon,
   BellIcon,
-  SearchIcon,
-  ChevronDownIcon,
   HeartIcon,
   ArchiveIcon,
   MoonIcon,
