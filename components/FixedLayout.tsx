@@ -6,9 +6,8 @@ import { HeaderComponent } from "./Heading";
 import { SubHeaderComponent } from "./SubHeading";
 import { useNotificationStore } from "@/state/notification";
 import Footer from "./Footer";
-import { AiChatButton } from "./ai/AiButton";
 import { useSidebarStore } from "@/state/generate-sidebar";
-import GenerateSidebar from "./sidebar/GenerateSidebar";
+import GenerateSidebar from "@/components/sidebar/GenerateSidebar";
 import { cn } from "@/lib/utils";
 import useBreakpoint from "@/hooks/useBreakpoint";
 import { MobileSearchDrawer } from "./SearchDrawer";
@@ -17,6 +16,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "./ui/resizable";
+import { AiChatButton } from "./ai/AiButton";
 
 export default function FixedLayout({
   children,

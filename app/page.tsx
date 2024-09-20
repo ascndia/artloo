@@ -1,7 +1,6 @@
 import { BaseImageCard } from "@/components/card/BaseImageCard";
 import { BaseCarousel } from "@/components/carousel/BaseCarousel";
 import { SaveToCollection } from "@/components/dialog/SaveToCollection";
-// import FixedLayout from "@/components/FixedLayout";
 import { BaseGallery } from "@/components/gallery/BaseGallery";
 import SectionDivider from "@/components/SectionDivider";
 import WithContainer from "@/components/WithContainer";
