@@ -1,9 +1,5 @@
 import React from "react";
-import { useForm, UseFormReturn } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-
-// Import shadcn/ui components
+import { UseFormReturn } from "react-hook-form";
 import {
   Form,
   FormField,
@@ -22,13 +18,13 @@ import {
   SelectItem,
   SelectValue,
 } from "@/components/ui/select";
-import { FormData } from "../Dialog/SaveToCollection";
+import { FormData } from "../dialog/SaveToCollection";
 import { ScrollArea } from "../ui/scroll-area";
 
 interface CompomentProps {
   form: UseFormReturn<FormData>;
 }
-const MyForm = ({ form }: CompomentProps) => {
+const CollectionForm = ({ form }: CompomentProps) => {
   const onSubmit = (data: FormData) => {
     console.log("Form Data:", data);
   };
@@ -118,4 +114,4 @@ const MyForm = ({ form }: CompomentProps) => {
   );
 };
 
-export default MyForm;
+export default CollectionForm;

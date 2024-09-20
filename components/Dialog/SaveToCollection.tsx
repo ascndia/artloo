@@ -16,7 +16,7 @@ import { Checkbox } from "../ui/checkbox";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import MyForm from "../Form/CollectionForm";
+import MyForm from "../form/CollectionForm";
 
 const formSchema = z.object({
   name: z.string().nonempty("Name is required"),
