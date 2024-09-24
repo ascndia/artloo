@@ -47,8 +47,8 @@ export default function FixedLayout({
             <ResizablePanel
               id="left-panel"
               order={1}
-              defaultSize={32}
-              minSize={32}
+              defaultSize={28}
+              minSize={28}
               maxSize={48}
               className="hidden md:block"
             >

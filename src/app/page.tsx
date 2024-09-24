@@ -29,17 +29,6 @@ export default function Home() {
       </WithContainer>
       <SectionDivider />
       <WithContainer>
-        <BaseCarousel title="Featured Collections">
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-        </BaseCarousel>
-      </WithContainer>
-      <SectionDivider />
-      <WithContainer>
         <BaseGallery title="Featured Articles" exploreLink="/articles">
           <BaseImageCard />
           <BaseImageCard />
