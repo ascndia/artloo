@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@xyflow/react/dist/style.css";
 import { ThemeProvider } from "next-themes";
+import { MantineProvider } from "@mantine/core";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,7 +34,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <MantineProvider>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </MantineProvider>
       </body>
     </html>
   );

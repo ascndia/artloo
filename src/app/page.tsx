@@ -19,23 +19,17 @@ export default function Home() {
           exploreLink="/featured"
           exploreText="View All"
         >
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
+          {Array.from(Array(10), () => (
+            <BaseImageCard />
+          ))}
         </BaseGallery>
       </WithContainer>
       <SectionDivider />
       <WithContainer>
         <BaseGallery title="Featured Articles" exploreLink="/articles">
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
-          <BaseImageCard />
+          {Array.from(Array(10), () => (
+            <BaseImageCard />
+          ))}
         </BaseGallery>
       </WithContainer>
       <SaveToCollection />

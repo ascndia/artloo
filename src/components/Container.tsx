@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: React.ElementType;
-  size?: "sm" | "md" | "lg" | "xl" | "full";
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "full";
   padding?: "none" | "sm" | "md" | "lg";
   className?: string;
   children: React.ReactNode;
@@ -15,7 +15,7 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   (
     {
       as: Component = "div",
-      size = "lg",
+      size = "2xl",
       padding = "md",
       className,
       children,
@@ -27,12 +27,14 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
       <Component
         ref={ref}
         className={cn(
-          "mx-auto w-full",
+          "mx-auto w-full container",
+
           {
-            "max-w-screen-sm": size === "sm",
-            "max-w-screen-md": size === "md",
-            "max-w-screen-lg": size === "lg",
-            "max-w-screen-xl": size === "xl",
+            // "max-w-screen-sm": size === "sm",
+            // "max-w-screen-md": size === "md",
+            // "max-w-screen-lg": size === "lg",
+            // "max-w-screen-xl": size === "xl",
+            // "max-w-screen-2xl": size === "2xl",
             "max-w-full": size === "full",
             "px-4": padding === "sm",
             "px-6": padding === "md",

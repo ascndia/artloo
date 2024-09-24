@@ -11,9 +11,18 @@ tech stack used
 - react hook form
 - zustand
 
-home page  
+home page
+
 ![screenshot](home.png)
-chat page  
+
+images page
+
+![screenshot](images.png)
+
+chat page
+
 ![screenshot](chat.png)
+
 generator page
+
 ![screenshot](generate.png)
